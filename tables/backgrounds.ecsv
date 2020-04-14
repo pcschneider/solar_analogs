@@ -1,0 +1,24 @@
+# %ECSV 0.9
+# ---
+# datatype:
+# - {name: source, datatype: string}
+# - {name: obsID, datatype: string}
+# - {name: detector, datatype: string}
+# - {name: ID, datatype: int16}
+# - {name: bg_x, datatype: float64}
+# - {name: bg_y, datatype: float64}
+# - {name: bg_r, datatype: float64}
+# - {name: use, datatype: bool}
+# delimiter: ','
+source, obsID, detector, ID, bg_x, bg_y, bg_r, use
+#HD 2071,  0784240101, pn, 1, 23330.5, 26102.5, 600 , False
+HD 1461,   0804040401, pn, 1, 23085.0, 25662.7, 600, True
+HD 114174, 0784240301, pn, 1, 25778.5, 27270.5, 600, True
+HD 120690, 0784240701, pn, 1, 23552.634, 23826.36, 600, True
+HD 135101, 0784241201, pn, 1, 27348.5, 27893.5, 600, True
+HD 2071,   0784240101, pn, 2, 23180.5, 26193.5, 600, True
+HD 210918, 0784240901, pn, 1, 25335,   24635, 600, True
+HD 25874,  0784240501, pn, 1, 24202,   23434, 600, True
+HD 39881,  0784241301, pn, 1, 23852,   24354, 600, True
+HD 42618,  0784240201, pn, 1, 23713.5, 24604.5, 600, True
+HD 45289,  0784241101, pn, 1, 26107, 28523, 600, True
