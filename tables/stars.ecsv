@@ -1,0 +1,32 @@
+# %ECSV 0.9
+# ---
+# datatype:
+# - {name: name, datatype: string}
+# - {name: Teff, datatype: float, description: effective temperature}
+# - {name: Teff_err, datatype: float, description: error on effective temperature}
+# - {name: Teff_ref, datatype: str, description: reference for effective temperature}
+# - {name: Mass, datatype: float, description: stellar mass in solar units}
+# - {name: Mass_err, datatype: float, description: error on mass}
+# - {name: Mass_ref, datatype: float, description: reference for mass}
+# - {name: age, datatype: float, description: Age in Gyrs}
+# - {name: age_min, datatype: float, description: Age in Gyrs}
+# - {name: age_max, datatype: float, description: Age in Gyrs}
+# - {name: age_ref, datatype: str, description: reference for age}
+# - {name: distance, datatype: float, description: distance in pc}
+# - {name: R_HK, datatype: float, description: log activity index}
+# - {name: R_HK_ref, datatype: str, description: activity index reference}
+# - {name: Vmag, datatype: float, description: optical brightness}
+name, Teff, Teff_err, Teff_ref, Mass, age, age_min, age_max, age_ref, distance, R_HK, R_HK_ref, Vmag
+"HD 2071", 
+"HD 42618" ,
+"HD 114174", 
+"HD 25874",
+"HD 120690",
+"HD 210918",
+"HD 45289",
+"HD 135101",
+"HD 39881",
+# 
+#
+# Refs:
+# Ramirez 2014 - https://ui.adsabs.harvard.edu/abs/2014A%26A...572A..48R/abstract
