@@ -1,2 +1,15 @@
 data
 ana/tst.sh
+TEX/main.aux
+TEX/main.bbl
+TEX/main.blg
+TEX/main.log
+TEX/main.pdf
+ana/__pycache__/
+ana/distances.py
+ana/mwe.py
+ana/props.tex
+ana/read_tab2.py
+ana/read_tab4.py
+ana/test.ecsv
+readme.html
