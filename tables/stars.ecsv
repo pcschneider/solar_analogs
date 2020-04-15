@@ -1,3 +1,4 @@
+
 # %ECSV 0.9
 # ---
 # datatype:
@@ -7,26 +8,28 @@
 # - {name: Teff_ref, datatype: str, description: reference for effective temperature}
 # - {name: Mass, datatype: float, description: stellar mass in solar units}
 # - {name: Mass_err, datatype: float, description: error on mass}
-# - {name: Mass_ref, datatype: float, description: reference for mass}
+# - {name: Mass_ref, datatype: string, description: reference for mass}
 # - {name: age, datatype: float, description: Age in Gyrs}
 # - {name: age_min, datatype: float, description: Age in Gyrs}
 # - {name: age_max, datatype: float, description: Age in Gyrs}
 # - {name: age_ref, datatype: str, description: reference for age}
-# - {name: distance, datatype: float, description: distance in pc}
+# - {name: Vmag, datatype: float, description: optical brightness}
 # - {name: R_HK, datatype: float, description: log activity index}
 # - {name: R_HK_ref, datatype: str, description: activity index reference}
-# - {name: Vmag, datatype: float, description: optical brightness}
-name, Teff, Teff_err, Teff_ref, Mass, age, age_min, age_max, age_ref, distance, R_HK, R_HK_ref, Vmag
-"HD 2071", 
-"HD 42618" ,
-"HD 114174", 
-"HD 25874",
-"HD 120690",
-"HD 210918",
-"HD 45289",
-"HD 135101",
-"HD 39881",
-# 
-#
-# Refs:
-# Ramirez 2014 - https://ui.adsabs.harvard.edu/abs/2014A%26A...572A..48R/abstract
+# - {name: Gmag, datatype: float, description: Gaia magnitude}
+# - {name: distance, datatype: float, description: distance in pc}
+name, Teff, Teff_err, Teff_ref, Mass, Mass_err, Mass_ref, age, age_min, age_max, age_ref,Vmag,  R_HK, R_HK_ref, Gmag, distance
+"HD 114174", 5747.000000, 6.000000, "Ramirez 2014", 0.991000, 0.004000, "Ramirez 2014", 6.400000, 5.700000, 7.000000, "Ramirez 2014", 6.82, -4.991, "Ramirez 2014", 6.612351, 26.375395
+"HD 120690", 5670.000000, 9.000000, "Ramirez 2014", 0.954000, 0.006000, "Ramirez 2014", 7.500000, 6.200000, 8.300000, "Ramirez 2014", 6.44, -4.797, "Ramirez 2014", 6.238136, 18.560279
+"HD 135101", 5684.000000, 8.000000, "Ramirez 2014", 0.986000, 0.005000, "Ramirez 2014", 9.600000, 9.300000, 9.900000, "Ramirez 2014", 6.68, -5.042, "Ramirez 2014", 6.494416, 32.361221
+"HD 1461",  , , , , , , , , , , , , , 6.290191, 23.469242
+"HD 146233", 5814.000000, 3.000000, "Ramirez 2014", 1.045000, 0.005000, "Ramirez 2014", 3.000000, 2.400000, 3.300000, "Ramirez 2014", 5.51, -4.983, "Ramirez 2014", 5.302589, 14.130780
+"HD 150248", 5715.000000, 5.000000, "Ramirez 2014", 0.960000, 0.002000, "Ramirez 2014", 7.600000, 6.800000, 8.000000, "Ramirez 2014", 7.03, -4.962, "Ramirez 2014", 6.851942, 27.788604
+"HD 157347", 5694.000000, 5.000000, "Ramirez 2014", 0.975000, 0.005000, "Ramirez 2014", 6.700000, 5.900000, 7.200000, "Ramirez 2014", 6.29, -5.014, "Ramirez 2014", 6.103737, 19.662175
+"HD 190771",  , , , , , , , , , , , , , 5.994136, 19.016547
+"HD 2071", 5717.000000, 5.000000, "Ramirez 2014", 0.974000, 0.007000, "Ramirez 2014", 4.700000, 3.900000, 5.700000, "Ramirez 2014", 7.27, -4.931, "Ramirez 2014", 7.108062, 28.352134
+"HD 210918", 5746.000000, 7.000000, "Ramirez 2014", 0.960000, 0.003000, "Ramirez 2014", 9.200000, 8.800000, 9.600000, "Ramirez 2014", 6.23, -5.004, "Ramirez 2014", 6.045040, nan
+"HD 25874", 5736.000000, 5.000000, "Ramirez 2014", 0.989000, 0.003000, "Ramirez 2014", 7.300000, 6.900000, 7.700000, "Ramirez 2014", 6.73, -5.0, "Ramirez 2014", 6.560911, 25.965914
+"HD 39881", 5733.000000, 5.000000, "Ramirez 2014", 0.959000, 0.003000, "Ramirez 2014", 9.700000, 9.400000, 10.000000, "Ramirez 2014", 6.6, -5.004, "Ramirez 2014", 6.443119, 27.514473
+"HD 42618", 5758.000000, 5.000000, "Ramirez 2014", 0.974000, 0.007000, "Ramirez 2014", 5.400000, 4.600000, 6.000000, "Ramirez 2014", 6.87, -4.948, "Ramirez 2014", 6.683028, 24.352981
+"HD 45289", 5710.000000, 5.000000, "Ramirez 2014", 0.980000, 0.002000, "Ramirez 2014", 9.500000, 9.300000, 9.800000, "Ramirez 2014", 6.65, -5.012, "Ramirez 2014", 6.493480, 27.874772

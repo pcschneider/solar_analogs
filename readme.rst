@@ -2,6 +2,21 @@ Purpose
 -------
 The tools extract the necessary information for the X-ray data of the solar analogs
 
+Article
+-------
+
+*Table 1*
+
+The data are mostly from Ramirez+ 2014 and the relevant tables are stored locally (``tables/tab2.dat`` and ``tables/tab4.dat``).
+The script ``ana/read_ramirez.py`` takes those data, adds Gaia information (for Gmag and distance) to produce ``tables/stars.ecsv``.
+This file can now be used to automatically create a **stab** for Table 1 using ``ana/targets_tex_table.py``, which is then manually adjusted to include all relevant data that are not present in Ramirez+ 2014. Therefore, this script currently produces a *local* file named ``props.tex`` that one would need to copy into the ``TEX`` folder, i.e., run (in ``ana/``)::
+  
+  p37 read_ramirez.py
+  p37 targets_tex_table.py
+  cp props.tex ../TEX/
+
+
+
 How to Use
 ----------
 There are a few sequences that must be obeyed to properly use the tools.

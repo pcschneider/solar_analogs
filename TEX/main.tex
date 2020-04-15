@@ -6,6 +6,13 @@
 \usepackage{graphicx}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{txfonts}
+% \usepackage{tablefootnote}
+% 
+% \usepackage{footnote}
+% \makesavenoteenv{tabular}
+% \makesavenoteenv{table}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,} % to follow the A&A style
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[options]{hyperref}
 % To add links in your PDF file, use the package "hyperref"
@@ -53,4 +60,13 @@ TBD
    \keywords{Stars: low-mass, X-rays: stars}
 
    \maketitle
+   
+\section{Introduction}
+Solar Analogs are
+
+\input{props}
+
+
+\bibliographystyle{aa} 
+\bibliography{analogs}
 \end{document}
