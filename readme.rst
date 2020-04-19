@@ -5,7 +5,7 @@ The tools extract the necessary information for the X-ray data of the solar anal
 Article
 -------
 
-*Table 1*
+*Table 1* (Targets)
 
 The data are mostly from Ramirez+ 2014 and the relevant tables are stored locally (``tables/tab2.dat`` and ``tables/tab4.dat``).
 The script ``ana/read_ramirez.py`` takes those data, adds Gaia information (for Gmag and distance) to produce ``tables/stars.ecsv``.
@@ -14,6 +14,27 @@ This file can now be used to automatically create a **stab** for Table 1 using `
   p37 read_ramirez.py
   p37 targets_tex_table.py
   cp props.tex ../TEX/
+
+*Table 2* (Observations)  
+
+The observations are read from ``tables/Xobs.ecsv``. The obs-date and exposure times are from the pn-files (``pn.fits``). Run (in ``ana/``)::
+
+  p37 obs_table.py
+  cp obs.tex ../TEX/
+
+  
+Target positions
+----------------
+
+*OM*
+
+For most XMM observations, the OM provides strictly simultaneous UV measurements. These can be used to determine accurate source positions. This is done using::
+
+  p37 create_om_centroids_table.py
+  
+This can write a table (*om_centroids_fn* from ``parameters.py``). Currently only a test-file is written, which must be changed to overwrite *om_centroids_fn*.
+
+*Nominal source positions*
 
 
 

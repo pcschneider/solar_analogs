@@ -7,14 +7,14 @@
 # - {name: directory, datatype: str, description: where the data is located for data_origin=local and relative to Xdata/Analogs folder}
 # - {name: use, datatype: bool, description: use this if several are available}
 obsID; observatory; data_origin; directory; use
-0804040401; XMM; local; data/HD1461/0804040401/odata; True
-0784240301; XMM; local; data/HD114174/0784240301/odata ; True
-0784240701; XMM; local; data/HD120690/0784240701/odata ; True
-0784241201; XMM; local; data/HD135101/0784241201/odata ; True
-0405180501; XMM; local; data/HD150248/0405180501/odata ; True
-0784240101; XMM; local; data/HD2071/0784240101/odata   ; True
-0784240901; XMM; local; data/HD210918/0784240901/odata ; True
-0784240501; XMM; local; data/HD25874/0784240501/odata  ; True
-0784241301; XMM; local; data/HD39881/0784241301/odata  ; True
-0784240201; XMM; local; data/HD42618/0784240201/odata  ; True
-0784241101; XMM; local; data/HD45289/0784241101/odata  ; True
+0804040401; XMM; local; ../data/HD1461/0804040401/odata   ; True
+0784240301; XMM; local; ../data/HD114174/0784240301/odata ; True
+0784240701; XMM; local; ../data/HD120690/0784240701/odata ; True
+0784241201; XMM; local; ../data/HD135101/0784241201/odata ; True
+0405180501; XMM; local; ../data/HD150248/0405180501/odata ; True
+0784240101; XMM; local; ../data/HD2071/0784240101/odata   ; True
+0784240901; XMM; local; ../data/HD210918/0784240901/odata ; True
+0784240501; XMM; local; ../data/HD25874/0784240501/odata  ; True
+0784241301; XMM; local; ../data/HD39881/0784241301/odata  ; True
+0784240201; XMM; local; ../data/HD42618/0784240201/odata  ; True
+0784241101; XMM; local; ../data/HD45289/0784241101/odata  ; True

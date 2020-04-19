@@ -245,6 +245,11 @@ if __name__ == "__main__":
     netCts = Tasks.PNflux(s, o)
     netCts.run(eLo=300, eHi=1000, cfc = 3.185e-12) 
     print(netCts)
+    
+    
+    ll = Tasks.ds9call(s, o)
+    ll.run()
+    print(ll.value)
     #exit()
     
     #srcCts = PNcounts(s, o)

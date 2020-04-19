@@ -23,7 +23,7 @@ for oi in xobs["obsID"]:
         ras, decs = [], []
         for i in ci:
             ra, dec = cens["RA"][i], cens["Dec"][i]
-            print(ra, dec)
+            #print(ra, dec)
             c = SkyCoord(ra, dec, unit=(u.hourangle, u.deg))#, FK5, unit=(u.deg, u.hourangle))
             print(c.ra, c.dec)
             ras.append(c.ra.degree)
@@ -55,6 +55,6 @@ for oi in xobs["obsID"]:
         extr["src_y"][ei] = pix[1]
         
         
-    print()
+    print(80*"=")
     
-extr.write(measured_cen_extr_fn, format='ascii.ecsv', delimiter=',')
+#extr.write(measured_cen_extr_fn, format='ascii.ecsv', delimiter=',')

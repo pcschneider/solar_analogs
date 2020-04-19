@@ -18,9 +18,13 @@ xx, yy, = [], []
 ois = []
 ras, decs = [], []
 
-for star in sources_dd:
+gi = np.where(sources_dd["observatory"] == "XMM")
+
+for star in sources_dd[gi]:
     st = star["name"]
     dr = "../data/"+st.replace(" ","")
+    print(dr)
+    
     oi = glob.glob(dr+"/0*")[0][-10:]
     ois.append(oi)
     o = XMMobservation(oi)
@@ -40,7 +44,9 @@ for star in sources_dd:
     print(co.value)
     xx.append(co.value[0][0])
     yy.append(co.value[0][1])
+    print(80*"=")
     print()
+    
     
 
 

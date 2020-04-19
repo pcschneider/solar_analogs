@@ -1,6 +1,6 @@
 from __future__ import print_function
 
-import pyfits
+from astropy.io import fits as pyfits
 #import wcs
 import collections
 import astropy.coordinates as coords

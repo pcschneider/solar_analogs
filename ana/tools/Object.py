@@ -1,5 +1,5 @@
 from __future__ import print_function
-import pyfits
+from astropy.io import fits as pyfits
 from astroquery.simbad import Simbad
 import astropy.coordinates as coords
 import astropy.units as u
