@@ -16,8 +16,10 @@ oo = open("obs.tex","w")
 
 header = """
 \\begin{table}
+\caption{Log of X-ray observations\label{tab:obs}}
+
   \centering
-  \\begin{tabular}{ccccc}
+  \\begin{tabular}{rcccr}
     \hline
     \hline
     Target & Observatory & Obs ID & Date & Exp Time \\\\
@@ -33,21 +35,34 @@ footer = """
 oo.write(header)
 
 
-for i, src in enumerate(sorted(srcs["name"])):
-    print(src, end=" ")
-    si = np.where(srcs["obsID"] == xobs["obsID"][i])[0]
-    
-    print(si, end=" ")
-    if len(si)==0: continue
+hdn = [int(a[3:]) for a in xobs["target"]]
+hdi = np.argsort(hdn)
 
-    obse = xobs["observatory"][si].data[0]
+for si in hdi:
+    src  = xobs["target"][si]
+    print(src, end=" ")
+    
+    dr = xobs["directory"][si]
+    fn = dr+"/pn.fits"
+    obsid = xobs["obsID"][si]
+    
+    
+    obse = xobs["observatory"][si]
     print(obse)
 
-    dr = xobs["directory"][si].data[0]
-    fn = dr+"/pn.fits"
-    obsid = xobs["obsID"][si].data[0]
+    
+    i = np.where(srcs["obsID"] == xobs["obsID"][si])[0]
+    
+    print(i, si, end=" ")
+    #if len(i)==0:
+        #oo.write("%s \\\\ \n" % src)
+        #print()
+        #print()
+        #continue
+
+    
     #print(type(dr))
-    print(xobs["obsID"][si].data, dr, fn)
+    print(obsid, dr, fn)
     try:
         ff = pyfits.open(fn)
     except FileNotFoundError:
