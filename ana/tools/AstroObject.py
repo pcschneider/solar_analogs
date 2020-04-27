@@ -23,7 +23,7 @@ class AstroObject():
         self.initialized = False
         self.observations = []
         self.verbose = verbose
-  def populateFromSimbad(self, verbose=1):
+  def populateFromSimbad(self, verbose=10):
         result_table = customSimbad.query_object(self.identifier)
         if verbose>2:
             print("AstroObject.py -> AstroObject::populateFromSimbad - Info: Data returned from Simbad:")
@@ -42,6 +42,7 @@ class AstroObject():
         if not isinstance(epoch, time.Time):
             epoch = time.Time(epoch, format=epochFormat)
         deltaTime = epoch.decimalyear - 2000.
+        #print(deltaTime)
         newCoord = coordinate4epoch(self.coord2000, deltaTime, self.pm, verbose=verbose)
         print(self.identifier, self.coord2000.to_string('hmsdms'), newCoord.to_string('hmsdms'))
         return newCoord

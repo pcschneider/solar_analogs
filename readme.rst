@@ -26,7 +26,7 @@ The observations are read from ``tables/Xobs.ecsv``. The obs-date and exposure t
 Target positions
 ----------------
 
-*OM*
+**OM**
 
 For most XMM observations, the OM provides strictly simultaneous UV measurements. These can be used to determine accurate source positions. This is done using::
 
@@ -34,8 +34,13 @@ For most XMM observations, the OM provides strictly simultaneous UV measurements
   
 This can write a table (*om_centroids_fn* from ``parameters.py``). Currently only a test-file is written, which must be changed to overwrite *om_centroids_fn*.
 
-*Nominal source positions*
+**Nominal source positions**
 
+This can be done for XMM using::
+
+    make_sources_ecsv.py
+    
+which writes a new *sources_ecsv_fn*-file (value specified in ``parameters.py``). It depends on the info in *observed_sources_fn* (specified in ``parameters.py``).
 
 
 How to Use

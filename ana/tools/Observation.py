@@ -102,7 +102,7 @@ class XMMobservation(Observation):
             else:
                 print("Observation.py -> XMMobservation::obsDate - ERROR: filenames not initialized!")
                 return False
-    def obsDate(self, which="pn", method="glob", verbose=4):
+    def obsDate(self, which="pn", method="glob", format='fits', verbose=4):
         """
         Get observation date.
         
@@ -118,7 +118,7 @@ class XMMobservation(Observation):
         astropy.time instance
         """
         try:
-            return self.obsDates[which]
+            return self.obsDates[which].to_value(format)
         except:
             if self.filenamesInitialized:
                 fn = self.filename[which]
@@ -126,8 +126,9 @@ class XMMobservation(Observation):
                 ff = pyfits.open(fn)
                 dd = ff[0].header["DATE-OBS"]
                 tmp = time.Time(dd, format="fits")
+                print(tmp, type(tmp))
                 self.obsDates[which] = tmp
-                return tmp
+                return tmp.to_value(format)
             else:
                 print("Observation.py -> XMMobservation::obsDate - ERROR: filenames not initialized!")
                 return False

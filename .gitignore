@@ -13,3 +13,5 @@ ana/read_tab2.py
 ana/read_tab4.py
 ana/test.ecsv
 readme.html
+obs.tex
+ana/tools/__pycache__/

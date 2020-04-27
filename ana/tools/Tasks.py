@@ -150,7 +150,7 @@ class PNpixCoords(Task):
         self.name = "PNpixCoords"
     def run(self, verbose=10):
         fn = self.observation.filename["pn_filt"]
-        co = self.object.coordinates(epoch=self.observation.obsDate(which="pn"))
+        co = self.object.coordinates(epoch=self.observation.obsDate(which="pn", format='decimalyear'))
         inp = np.array(co.to_string("decimal", precision=10 ).split()).astype(float)
         pix = self.observation.sky2pix(inp)
         self.value = pix    
