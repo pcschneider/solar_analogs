@@ -7,6 +7,7 @@ from properMotion import coordinate4epoch
 import astropy.time as time
 from XMMobservation import XMMwcs
 import numpy as np
+from astropy.table import Table
 
 # add fields to the simbad querry, which we need lateron
 customSimbad = Simbad()
@@ -65,6 +66,7 @@ class AstroObject():
             self.pm = [pm_ra, pm_dec]
             self.initialized = True
   def coordinates(self, epoch=2000., epochFormat="decimalyear", verbose=1):
+        #print("xxxxxxxxxxxxxxxxX", epoch, type(epoch))
         if not isinstance(epoch, time.Time):
             epoch = time.Time(epoch, format=epochFormat)
         deltaTime = epoch.decimalyear - 2000.
@@ -77,7 +79,30 @@ class AstroObject():
         return self.identifier+":\n Coordinates (2000): "+self.coord2000.to_string('hmsdms') +"\n Proper Motion: " + str(self.pm) + "\n"
       else:
         return "AstroObject instance not initialized"
-      
+
+
+def get_filename(fn, parameter):
+    parameters = __import__(fn[0:-3])
+    pm = getattr(parameters, parameter)
+    return pm
+
+class ObservedObject(AstroObject):
+    def __init__(self, idf, parameters_fn=None, verbose=1):
+        AstroObject.__init__(self, idf, verbose=verbose)
+        self.gatherObservations(parameters_fn)
+        
+    def gatherObservations(self, parameters_fn):    
+        #exec(open(parameters_fn).read())
+        ##parameters = __import__(parameters_fn[0:-3])
+        Xobs_ecsv_fn = get_filename(parameters_fn, 'Xobs_ecsv_fn')
+        xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';') 
+        gi = np.where(xobs["target"] == self.identifier)[0]
+        if len(gi)>0:
+            print(self.identifier, xobs["obsID"][gi].data, xobs["observatory"][gi].data,  xobs["directory"][gi].data)
+    def getOMcenroid(self):
+        parameters = __import__(parameters_fn[0:-3])
+        Xobs_ecsv_fn = getattr(parameters, 'Xobs_ecsv_fn')
+        
 if __name__ == "__main__":
     #o = AstroObject("HD 25874")
     o = AstroObject("HD 210918")

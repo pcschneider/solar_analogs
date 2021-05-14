@@ -1,5 +1,6 @@
 import numpy as np
 from astropy.table import Table
+from astropy.io import fits as pyfits
 from parameters import *
 import glob
 import sys
@@ -19,6 +20,9 @@ for obsid in xobs["obsID"]:
     
     print(directory)
     oo = om.OM(directory)
+    for fn in oo.images:
+        ff = pyfits.open(fn)
+        print("image: ",fn, " -> ", ff[0].header["FILTER"] ," ", ff[0].header["EXPOSURE"])
     cens = oo.source_positions()
     for oi in cens:
         for exp in cens[oi]:
@@ -31,5 +35,5 @@ for obsid in xobs["obsID"]:
 
 tt = Table(rows=tab, names=("obsID","expID", "RA", "Dec"))
 fn = om_centroids_fn
-fn = "test.ecsv"
+fn = "test2.ecsv"
 tt.write(fn, format='ascii.ecsv', delimiter=',',overwrite=True)

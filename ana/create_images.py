@@ -19,26 +19,38 @@ outdata = {}
 
 for st in stars:
     dr = "../data/"+st.replace(" ","")
-    oi = glob.glob(dr+"/0*")[0][-10:]
+    print("dr: ",dr)
+    gg = glob.glob(dr+"/0*")
+    print("gg gg: ", gg)
+    if len(gg)<1: continue
+    oi = gg[0][-10:]
+    print("directory: %s, obsID: %s" % (dr, oi))
     o = XMMobservation(oi)
+    
     o.baseDir = dr
     o.initializeFilenames()
     
     s = AstroObject(st)
     s.populateFromSimbad()
+    
     s.age = ages[st]
     print(s)
     ep = o.obsDate(which="pn")
     print(ep)
-    print("coords at obs: ",s.coordinates(epoch=ep).to_string(style='hmsdms'))
+    
+    print("coords at obs: ",s.coordinates(epoch=ep, epochFormat='fits').to_string(style='hmsdms'))
     co = PNpixCoords(s, o)
     co.run()
+
     ofile = os.path.dirname(o.filename["pn"])+"/pn_image_300-1000.fits"
     print("ofile",ofile)
     print("pix coords",co)
+
     #ofile="image.fits"
     
     call = makeImageCall(s, o)
+    #print("-----------------")
+
     call.run(ofile=ofile,expression="PI in [300:1000]")
     print(call.value)
     outdata[st] = call.value

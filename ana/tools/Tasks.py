@@ -170,7 +170,8 @@ class makeImageCall(Task):
         """
         fn = self.observation.filename[which]
         epoch = self.observation.obsDate("pn")
-        co = self.object.coordinates(epoch=epoch)
+        #print("EPOCH: ",epoch, type(epoch))
+        co = self.object.coordinates(epoch=epoch, epochFormat="fits")
         inp = np.array(co.to_string("decimal", precision=10 ).split()).astype(float)
         pix = self.observation.sky2pix(inp)[0]
         x, y = pix[0], pix[1]

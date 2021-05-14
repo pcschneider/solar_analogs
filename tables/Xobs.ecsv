@@ -21,3 +21,5 @@ HD 150248 ; 0405180501; XMM; local; ../data/HD150248/0405180501/odata ; True
 HD 157347 ; 0804040301; XMM; local; ../data/HD157347/0804040301/odata; True
 HD 190771 ; 0804040201; XMM; local; ../data/HD190771/0804040201/odata; True
 HD 210918 ; 0784240901; XMM; local; ../data/HD210918/0784240901/odata ; True
+#HD 146233 ; 12393 ; Chandra ; local ; ../data/HD146233 ; True
+HD 146233 ; 0303660101 ; XMM; local ; ../data/HD146233/0303660101 ; True

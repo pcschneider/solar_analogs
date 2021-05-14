@@ -59,9 +59,10 @@ class XMMwcs(WCS):
         if not lst:
             return ret[0]
         return ret
+    
 
 if __name__ == "__main__":        
-    xmm = XMMwcs("../../data/HD114174/0784240301/orig_data/3042_0784240301_EPN_S003_ImagingEvt_filt.fits")
+    xmm = XMMwcs("../../data/HD114174/0784240301/odata/3042_0784240301_EPN_S003_ImagingEvt_filt.fits")
 
     #pixcrd = np.array([[0, 0], [24, 38], [45, 98]], np.float_)
     #print(xmm.wcs.wcs_pix2world(pixcrd, 1))

@@ -6,7 +6,7 @@ import glob
 from astropy import wcs
 
 class OM():
-    glob_strings = {"images":"*SIMA*", "srclists":"*SWSRLI*"}
+    glob_strings = {"images":"*SIMA*.FIT", "srclists":"*SWSRLI*"}
     def __init__(self, dr):
         """
           Parameters
@@ -83,21 +83,31 @@ class OM():
             idf = fn[-20:-14]
             obsid = ff[0].header["OBS_ID"]
             print(obsid, idf)
-            ra, dec = ff[1].data["RA"], ff[1].data["DEC"]
+            try:
+                ra, dec = ff[1].data["RA"], ff[1].data["DEC"]
+            except:
+                print(fn," does not contain RA, Dec coordinates.")
+                continue
             rate = ff[1].data["CORR_RATE"]
             coords = C.SkyCoord(ra, dec, unit=("deg", "deg"), frame='icrs')
             tc = []
-            for c in coords:
+            ci = []
+            for i, c in enumerate(coords):
+                #print(c)
                 if len(tc) == 0: 
                     tc.append(c.to_string("hmsdms",sep=':', precision=2, pad=True))
+                    ci.append(i)
                     continue
-                dist = c.separation(tc).arcsec
-                print(dist)
+                #print(c, tc, sc)
+                dist = c.separation(coords[ci]).arcsec
+                #print("dist: ",dist)
                 gi = np.where(dist>2)[0]
-                for i in gi:
+                for j in gi:
                     tc.append(c.to_string("hmsdms",sep=':', precision=2, pad=True))
+                    #ci.append(j)
             crds[idf] = tc
-            print(crds)
+        if len(crds) == 0:
+            return None
         return {obsid:crds}
     
     
