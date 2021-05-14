@@ -96,6 +96,16 @@ OM source properties
   | which stores the data in ``OM_fluxes_fn``.
 
 
+Re-run everything
+-----------------
+
+Do::
+
+  p37 create_om_centroids_table2.py # -> om_centroids_fn
+  p37 measured_centroids.py # -> measured_cen_extr_fn
+  p37 make_extract_table.py # -> extract_prop_fn
+  
+  
 Description of data
 -------------------
 

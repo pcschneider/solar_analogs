@@ -102,7 +102,7 @@ class XMMobservation(Observation):
             else:
                 print("Observation.py -> XMMobservation::obsDate - ERROR: filenames not initialized!")
                 return False
-    def obsDate(self, which="pn", method="glob", format='fits', verbose=4):
+    def obsDate(self, which="pn", method="glob", format='fits', verbose=40):
         """
         Get observation date.
         
@@ -126,12 +126,13 @@ class XMMobservation(Observation):
                 ff = pyfits.open(fn)
                 dd = ff[0].header["DATE-OBS"]
                 tmp = time.Time(dd, format="fits")
-                print(tmp, type(tmp))
+                print("tmp: ",tmp, type(tmp))
                 self.obsDates[which] = tmp
                 return tmp.to_value(format)
             else:
                 print("Observation.py -> XMMobservation::obsDate - ERROR: filenames not initialized!")
                 return False
+
     def download(self, which="pps"):
         """
           Download data from XMM archive

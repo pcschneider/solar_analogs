@@ -56,8 +56,9 @@ for star in stars:
         continue
     
     for oi in cens:
-        print("Adding centroids for ",star)
+        print("Adding centroids for ",star, " obsID: ",oi)
         for exp in cens[oi]:
+            print(exp, cens[oi][exp])
             xx = cens[oi][exp][0].split()
             tab.append([oi, exp, xx[0], xx[1], star])
     #print(tab)

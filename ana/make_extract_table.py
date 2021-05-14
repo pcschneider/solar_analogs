@@ -40,5 +40,6 @@ for d in src:
     row = gather_info(d["name"])
     if row != False:
       rows.append(row)    
-tt = Table(rows=rows, names=("source", "obsID", "fn", "src_x", "src_y", "src_r", "bkg_x", "bkg_y", "bkg_r"))
-tt.write(extract_prop_fn, format='ascii.ecsv', delimiter=',')
+tt = Table(rows=rows, names=("target", "obsID", "fn", "src_x", "src_y", "src_r", "bkg_x", "bkg_y", "bkg_r"))
+tt.write(extract_prop_fn, format='ascii.ecsv', delimiter=',', overwrite=True)
+#tt.write("test3.ecsv", format='ascii.ecsv', delimiter=',', overwrite=True)

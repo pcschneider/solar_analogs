@@ -105,7 +105,9 @@ class OM():
                 for j in gi:
                     tc.append(c.to_string("hmsdms",sep=':', precision=2, pad=True))
                     #ci.append(j)
-            crds[idf] = tc
+            if len(tc)>0:
+                crds[idf] = tc
+            #else:
         if len(crds) == 0:
             return None
         return {obsid:crds}
