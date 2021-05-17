@@ -133,6 +133,14 @@ class XMMobservation(Observation):
                 print("Observation.py -> XMMobservation::obsDate - ERROR: filenames not initialized!")
                 return False
 
+    def coord4target(self, target):
+        oo = AstroObject(target)
+        oo.populateFromSimbad()
+        date_obs = self.obsDate(format='fits')
+        print("target: ",target, " date-Obs: ",date_obs)
+        cc = oo.coordinates(date_obs, epochFormat='fits')
+        return cc
+
     def download(self, which="pps"):
         """
           Download data from XMM archive

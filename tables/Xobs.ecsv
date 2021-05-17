@@ -8,8 +8,8 @@
 # - {name: directory, datatype: str, description: where the data is located for data_origin=local and relative to Xdata/Analogs folder}
 # - {name: use, datatype: bool, description: use this if several are available}
 target; obsID; observatory; data_origin; directory; use
-HD 2071 ; 0784240101; XMM; local; ../data/HD2071/0784240101   ; True
 HD 1461 ; 0804040401; XMM; local; ../data/HD1461/0804040401   ; True
+HD 2071 ; 0784240101; XMM; local; ../data/HD2071/0784240101   ; True
 HD 25874 ; 0784240501; XMM; local; ../data/HD25874/0784240501  ; True
 HD 39881 ; 0784241301; XMM; local; ../data/HD39881/0784241301  ; True
 HD 42618 ; 0784240201; XMM; local; ../data/HD42618/0784240201  ; True

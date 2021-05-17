@@ -100,10 +100,25 @@ Re-run everything
 -----------------
 
 Do::
+  
+  p37 make_sources_ecsv.py
+  # Create file containing the nominal source positions in detector coordinates
+          # -> sources_ecsv_fn
+  p37 check_bkgs.py
+          # Checks if background regions are defined for all sources
+  p37 make_extract_table.py 
+          # Takes the information for the src and bkg regions and generates an "extraction" table
+          # -> extract_prop_fn          
+          
+Update with OM positions::
 
-  p37 create_om_centroids_table2.py # -> om_centroids_fn
-  p37 measured_centroids.py # -> measured_cen_extr_fn
-  p37 make_extract_table.py # -> extract_prop_fn
+  p37 create_om_centroids_table2.py 
+          # Reads OM information and stores it in 
+          # -> om_centroids_fn  
+    p37 measured_centroids.py 
+          # Reads OM centroids and averages them 
+          # -> measured_cen_extr_fn
+  
   
   
 Description of data

@@ -7,18 +7,18 @@ import pyfits
 #import astropy.io.ascii
 #from astropy.io import ascii
 
-prefix="pn200"
+prefix="pn300"
 binning=1
 fn = extract_prop_fn
-fn = measured_cen_extr_200_fn
+fn = measured_cen_extr_fn #_200_fn
 
 
 
-src = Table.read(sources_ecsv_fn, format='ascii.ecsv', delimiter=',')
-bkg = Table.read(bgs_ecsv_fn, format='ascii.ecsv', delimiter=',')
-xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';')
+#src = Table.read(sources_ecsv_fn, format='ascii.ecsv', delimiter=',')
+#bkg = Table.read(bgs_ecsv_fn, format='ascii.ecsv', delimiter=',')
+#xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';')
 
-# Template
+## Template
 #evselect table=pn_filt.fits withspectrumset=yes spectrumset=pn_spec.fits energycolumn=PI withspecranges=yes specchannelmin=0 specchannelmax=20479 spectralbinsize=5 expression="(FLAG==0) && (PATTERN<=4) && ((X,Y) in circle(${srcc},400))"
 #evselect table=pn_filt.fits withspectrumset=yes spectrumset=pn_spec_bg.fits energycolumn=PI withspecranges=yes specchannelmin=0 specchannelmax=20479 spectralbinsize=5 expression="(FLAG==0) && (PATTERN<=4) && ((X,Y) IN circle(${bgpn},900))"
 #backscale spectrumset=pn_spec.fits badpixlocation=pn_filt.fits
@@ -86,9 +86,10 @@ def generate_script(fn, src_x, src_y, src_r, bkg_x, bkg_y, bkg_r,prefix, binning
 
 print("Reading ",fn)    
 tt = Table().read(fn, format='ascii.ecsv', delimiter=',')
+print("Generating scripts for ",len(tt["fn"]), " files.")
 for t in tt:
     print(t)
-    continue
+    #continue
     #generate_script(fn, src_x, src_y, src_r, bkg_x, bkg_y, bgk_r,prefix, binning=1, ):
     oo = generate_script(t["fn"], t["src_x"],t["src_y"], t["src_r"], t["bkg_x"], t["bkg_y"], t["bkg_r"], prefix=prefix)
     print(oo)

@@ -68,7 +68,7 @@ for star in stars:
 
 tt = Table(rows=tab, names=("obsID","expID", "RA", "Dec", "target"))
 fn = om_centroids_fn
-fn = "test2.ecsv"
+#fn = "test2.ecsv"
 tt.write(fn, format='ascii.ecsv', delimiter=',',overwrite=True)
 
 print("Centroids for ",len(np.unique(tt["target"])), " stars.")

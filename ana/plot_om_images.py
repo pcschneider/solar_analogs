@@ -17,11 +17,20 @@ xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';')
 #bkg = Table.read(bgs_ecsv_fn, format='ascii.ecsv', delimiter=',')
 extr = Table.read(measured_cen_extr_fn, format='ascii.ecsv', delimiter=';')
 
+nothing=[]
+
 tab = []
-for obsid in xobs["obsID"]:
+for tt, obsid, dr in zip(xobs["target"], xobs["obsID"], xobs["directory"]):
+    print(" Target: ",tt)
     ei = np.where(obsid == extr["obsID"])[0]
     #bi = np.where(obsid == bkg["obsID"])[0]
-    print("obsID: ",obsid," exposureID: ",ei," pn_fn:", extr["fn"])
+    print("obsID: ",obsid," exposureID: ",ei," pn_fn:", extr["fn"][ei])
+    if len(ei)==0:
+        print("Nothing...")
+        print(80*"=")
+        nothing.append((tt, obsid, dr))
+        continue
+    
     pn_fn = extr["fn"][ei].data[0]
     src_x, src_y = extr["src_x"][ei].data[0], extr["src_y"][ei].data[0]
     print(obsid, " ",ei, " filename: ",pn_fn)
@@ -32,11 +41,25 @@ for obsid in xobs["obsID"]:
     
     #src_x,src_y,src_r,bkg_x,bkg_y,bkg_r
     
+    
     try:
-        directory = glob.glob("../data/*/"+str(obsid)+"/odata/omf")[0]
+        gstr = "../data/*/"+str(obsid)+"/odata/omf"
+        print("Checking: ", gstr)
+        directory = glob.glob(gstr)[0]
     except     IndexError:
-        print("No OM data for ",obsid)
-        continue
+        directory = None
+        print("No OM data in ",gstr)
+        
+    if directory == None:
+        try:    
+            gstr = "../data/*/"+str(obsid)+"/omf"
+            print("Checking: ", gstr)
+            directory = glob.glob(gstr)[0]        
+        except     IndexError:
+            print("No OM data for ",obsid)
+            print(80*"=")
+            nothing.append((tt, obsid, dr))
+            continue
     
     print(directory)
     
@@ -79,3 +102,6 @@ for obsid in xobs["obsID"]:
     
     print(80*"=")
     print()
+
+for x in nothing:
+    print(x)

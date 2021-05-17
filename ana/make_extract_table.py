@@ -9,6 +9,8 @@ import os
 src = Table.read(sources_ecsv_fn, format='ascii.ecsv', delimiter=',')
 bkg = Table.read(bgs_ecsv_fn, format='ascii.ecsv', delimiter=',')
 xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';')
+cens = Table.read(measured_cen_extr_fn, format='ascii.ecsv', delimiter=';')
+
 
 def gather_info(source, source_file="pn.fits", src_radius=300):
     si = np.where(src["name"] == source)[0]    
@@ -23,7 +25,7 @@ def gather_info(source, source_file="pn.fits", src_radius=300):
     print(d["name"], d["obsID"], gi)
     directory = xobs["directory"][xi].data
     #print(directory[0])
-    fn = "../"+directory[0]+"/"+source_file
+    fn = directory[0]+"/odata/"+source_file
     #print(fn)
     gl = glob.glob(fn)
     #print(gl)
@@ -36,10 +38,17 @@ def gather_info(source, source_file="pn.fits", src_radius=300):
     return source, d["obsID"], fn, src_x, src_y, src_r, bkg_x, bkg_y, bkg_r
 
 rows = []    
+nothing = []
+
 for d in src:
     row = gather_info(d["name"])
     if row != False:
-      rows.append(row)    
+      rows.append(row) 
+    else:
+        nothing.append(d)
+
+print("Nothing for",nothing)        
+        
 tt = Table(rows=rows, names=("target", "obsID", "fn", "src_x", "src_y", "src_r", "bkg_x", "bkg_y", "bkg_r"))
 tt.write(extract_prop_fn, format='ascii.ecsv', delimiter=',', overwrite=True)
 #tt.write("test3.ecsv", format='ascii.ecsv', delimiter=',', overwrite=True)
