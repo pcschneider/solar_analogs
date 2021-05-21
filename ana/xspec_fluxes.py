@@ -40,7 +40,7 @@ def fluxes(fn):
     xs.Fit.show()
     xs.Plot.device="/xs"
     xs.Plot("data")
-    return targ, oi, a, m(3).values[0], b, ra[0], ra[1]
+    return list([targ, oi, a, m(3).values[0], b, ra[0], ra[1]])
     #m.error[1]
     
     
@@ -57,6 +57,10 @@ for fn in files:
     r = fluxes(spec_fn)
     print(spec_fn)
     print("     ", r)
+    targ = dr.split("/")[-3]
+    targ = targ[0:2]+" "+targ[2:]
+    print("targ: ",targ)
+    r[0] = targ
     res.append(r)
     #print()
     print(80*"=")
