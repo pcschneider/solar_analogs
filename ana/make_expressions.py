@@ -3,14 +3,14 @@ from astropy.table import Table
 import numpy as np
 import glob
 import os
-import pyfits
+from astropy.io import fits as pyfits
 #import astropy.io.ascii
 #from astropy.io import ascii
 
 prefix="pn_final"
 binning=1
 fn = extract_prop_fn
-fn = measured_cen_extr_fn #_200_fn
+#fn = measured_cen_extr_fn #_200_fn
 
 
 

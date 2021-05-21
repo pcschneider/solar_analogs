@@ -126,7 +126,8 @@ Update SAS config (in 'ana'; loops through the 'pn300_extract_bin1.sh'-files)::
 Create extract scripts::
 
   p37 make_expressions.py # Takes the extractions listed in `fn` given at the beginning of the script
-  . run_extract.sh
+  # Update the 'ls'-statement to return the desired extract scripts (line 5 of the script)
+  . run_extract.sh 
   
 Description of data
 -------------------

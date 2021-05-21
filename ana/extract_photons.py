@@ -3,7 +3,7 @@ from astropy.table import Table
 import numpy as np
 import glob
 import os
-import pyfits
+from astropy.io import fits as pyfits
 import pToolsRegion
 import pToolsUtils
 
@@ -14,7 +14,7 @@ xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';')
 #extr = Table.read(measured_cen_extr_200_fn, format='ascii.ecsv', delimiter=';')
 extr = Table.read(measured_cen_extr_fn, format='ascii.ecsv', delimiter=';')
 
-prefix="pn"
+prefix="pn_final"
 
 res = []
 
@@ -22,8 +22,8 @@ for source in src:
     xi = np.where(source["obsID"] == xobs["obsID"])[0]
     ei = np.where(source["obsID"] == extr["obsID"])[0]
     oi = source["obsID"]
-    sfn = "../"+xobs["directory"][xi].data[0]+"/"+oi+"_"+prefix+"_spec.fits"
-    bfn = "../"+xobs["directory"][xi].data[0]+"/"+oi+"_"+prefix+"_spec_bg.fits"
+    sfn = xobs["directory"][xi].data[0]+"/odata/"+oi+"_"+prefix+"_spec.fits"
+    bfn = xobs["directory"][xi].data[0]+"/odata/"+oi+"_"+prefix+"_spec_bg.fits"
     print(source["name"], xobs["obsID"][xi].data, sfn, bfn)
     try:
         ff_src = pyfits.open(sfn)
@@ -58,7 +58,7 @@ for source in src:
         
         ontime = pyfits.open(fn)[1].header["LIVETIME"]
         rate = (src_cts[0] - bkg_cts[0] * area_scale)/ontime
-        
+        print("rate: ",rate)
         res.append([source["name"], source["obsID"], src_cts[0], bkg_cts[0], area_scale, ontime, rate])
         
     except Exception as e:
@@ -70,7 +70,7 @@ for r in res:
     print(r)
     
 tt = Table(rows=res, names=("source", "obsID", "src_cts", "bkg_cts", "area_scale", "ontime", "net_rate"))
-tt.write(extracted_photons_fn, format='ascii.ecsv', delimiter=',')
+#tt.write(extracted_photons_fn, format='ascii.ecsv', delimiter=',')
 #tt.write(extracted_photons_02_04_fn, format='ascii.ecsv', delimiter=',')
 #tt.write(extracted_photons_O7_fn, format='ascii.ecsv', delimiter=',')
     

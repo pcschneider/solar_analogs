@@ -2,24 +2,28 @@
 
 pd=$(pwd -P)
 
-dirs=$(ls ../data/*/0*/odata/*extract_bin1.sh)
+scripts=$(ls ../data/*/0*/odata/pn_final*extract_bin1.sh)
 # echo $dirs
-for dr in $dirs
+for dr in $scripts
 do
   echo $dr
-  cdd=${dr:0: -18}
-  bdd=${dr:0: -24}
+#   cdd=${dr:0: -18}
+  cdd=${dr%/*}
+  bdd=${cdd%/*}
+  bn=${dr##*/}
   echo "cdd=$cdd"
   echo "bdd=$bdd"
-  sasi=$(ls ${bdd}sas*.sh)
+  sasi=$(ls ${bdd}/sas*.sh)
   echo "sasi=$sasi"
-  
-#   cd $bdd
+  echo "script name: ${bn}"
+#   
+# #   cd $bdd
   source $sasi
-  
+# #   
+#   
   cd $cdd
-  source pn200_extract_bin1.sh
+  source $bn
   cd $pd
-  echo
+#   echo
 done  
 
