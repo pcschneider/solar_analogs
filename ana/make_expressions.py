@@ -7,7 +7,7 @@ import pyfits
 #import astropy.io.ascii
 #from astropy.io import ascii
 
-prefix="pn300"
+prefix="pn_final"
 binning=1
 fn = extract_prop_fn
 fn = measured_cen_extr_fn #_200_fn

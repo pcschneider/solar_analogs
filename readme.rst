@@ -119,7 +119,14 @@ Update with OM positions::
           # Reads OM centroids and averages them 
           # -> measured_cen_extr_fn
   
+Update SAS config (in 'ana'; loops through the 'pn300_extract_bin1.sh'-files)::
+
+  . run_update.sh
   
+Create extract scripts::
+
+  p37 make_expressions.py # Takes the extractions listed in `fn` given at the beginning of the script
+  . run_extract.sh
   
 Description of data
 -------------------

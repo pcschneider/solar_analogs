@@ -18,6 +18,7 @@ plt.rcParams.update({'font.size': 13})
 xobs = Table.read(Xobs_ecsv_fn, format='ascii.ecsv', delimiter=';') 
 #bkg = Table.read(bgs_ecsv_fn, format='ascii.ecsv', delimiter=',')
 extr = Table.read(measured_cen_extr_fn, format='ascii.ecsv', delimiter=';')
+extr = Table.read(extract_prop_fn, format='ascii.ecsv', delimiter=';')
 #extr = Table.read("test2.ecsv", format='ascii.ecsv', delimiter=';')
 image_fn = "pn_image_300-1000.fits"
 
@@ -47,7 +48,7 @@ for tt, obsid in zip(xobs["target"], xobs["obsID"]):
     
     sky = w.pix2sky([src_x, src_y])
     bkg = w.pix2sky([bkg_x, bkg_y])
-    print("sky: ",sky, type(sky), "(", src_x, src_y,")")
+    print("sky: ",sky, type(sky), "(", src_x, src_y, src_r,")")
 
     try:
         ff = pyfits.open(fn)

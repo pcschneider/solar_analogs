@@ -70,8 +70,18 @@ Solar Analogs are
 The X-ray observations of solar analogs were obtained over several years with XMM-Newton and Chandra. Table~\ref{tab:obs} provides an overview of the analyzed data. The XMM-Newton data were processed with SAS version 15.0.0 using standard procedures
 and \texttt{ciao} version 4.12 with CALDB 4.9.1 was used for the Chandra data.
 
+\subsection{XMM-Newton data}
+All targets are detected in the OM observations so that source regions were 
+defined based on the OM positions (as the OM and pn detector positions are aligned). 
+For sources that are also well detected in X-rays, we slightly modified the 
+extraction to perfectly center the extraction region, which required shifts on 
+the 2~arcsec level. Background were extracted from nearby, source-free regions.
+
+
 
 \input{obs}
+
+
 
 \bibliographystyle{aa} 
 \bibliography{analogs}
