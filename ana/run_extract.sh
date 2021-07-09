@@ -23,7 +23,9 @@ do
 #   
   cd $cdd
   source $bn
+  pdir=$(pwd -P) 
+  echo " should have run ${pdir}/${bn} now..."
   cd $pd
-#   echo
+  echo
 done  
 

@@ -118,16 +118,28 @@ Update with OM positions::
     p37 measured_centroids.py 
           # Reads OM centroids and averages them 
           # -> measured_cen_extr_fn
+
+Count photons within regions and calculate net rates (without considering detector properties like dead pixel, gaps, etc.)::
   
+  p37 extract_photons.py
+
+          
 Update SAS config (in 'ana'; loops through the 'pn300_extract_bin1.sh'-files)::
 
   . run_update.sh
   
-Create extract scripts::
+Create extract scripts (uses SAS tools to extract spectra and light curves). They 
+are generated in the data directories (e.g., ``HD45289/0784241101/odata``)::
 
   p37 make_expressions.py # Takes the extractions listed in `fn` given at the beginning of the script
   # Update the 'ls'-statement to return the desired extract scripts (line 5 of the script)
   . run_extract.sh 
+  
+To analyze the spectra, use::
+
+    heainit # only required for the first script run
+    p37 xspec_fluxes.py
+  
   
 Description of data
 -------------------

@@ -65,11 +65,13 @@ for source in src:
         print(e)
         pass
     print()
-
+    
+print("# source, obsID, src counts, bkg counts, area ratio, ontime, net rate")
 for r in res:
     print(r)
+
     
-tt = Table(rows=res, names=("source", "obsID", "src_cts", "bkg_cts", "area_scale", "ontime", "net_rate"))
+tt = Table(rows=res, names=("source", "obsID", "src_cts", "bkg_cts", "area_scale", "ontime (s)", "net_rate (cts/s)"))
 #tt.write(extracted_photons_fn, format='ascii.ecsv', delimiter=',')
 #tt.write(extracted_photons_02_04_fn, format='ascii.ecsv', delimiter=',')
 #tt.write(extracted_photons_O7_fn, format='ascii.ecsv', delimiter=',')
