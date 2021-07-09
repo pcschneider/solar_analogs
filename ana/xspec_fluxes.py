@@ -75,3 +75,4 @@ fn = xspec_fluxes_fn
 np.savetxt(fn, res,delimiter=", ", fmt="%s", header="target, obsID, flux_lo, flux, flux_hi, rate, rate_err")    
 #tt = Table(rows=res, names=("target", "obsID", "lo", "fit", "hi"))
 #tt.write(xspec_fluxes_fn, format='ascii.ecsv', delimiter=',')
+print("Data stored in '%s'." % fn)
