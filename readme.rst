@@ -21,6 +21,15 @@ The observations are read from ``tables/Xobs.ecsv``. The obs-date and exposure t
 
   p37 obs_table.py
   cp obs.tex ../TEX/
+  
+*Table 3* (Fluxes)
+
+The script::
+
+  cd TEX
+  p37 gen_flux_table.py
+  
+generates the flux table from the ``../tables/xspec_fluxes.ecsv``.   
 
   
 Target positions
